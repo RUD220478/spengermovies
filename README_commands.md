@@ -17,7 +17,10 @@ GRANT ALL PRIVILEGES ON DATABASE spengermovies TO spengermovies;
 ```
 Run these commands and build
 ```
+# build
 ./mvnw clean package -U
+
+# run website in development mode
 ./mvnw spring-boot:run 
 ```
 Use clean if the project isn't running properly.
