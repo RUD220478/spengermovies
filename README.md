@@ -9,15 +9,6 @@ private String movieTitle; # Avengers, Batman, Matrix
 private Integer quantity;
 private Boolean active;
 
-# Commands used
-docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
-
-docker exec -it postgres psql -U postgres
-CREATE DATABASE spengermovies;
-CREATE USER spengermovies WITH PASSWORD 'spengermovies';
-GRANT ALL PRIVILEGES ON DATABASE spengermovies TO spengermovies;
-\q
-
 # Spenger Movies
 
 This project can be used as a starting point to create your own Vaadin application with Spring Boot.
