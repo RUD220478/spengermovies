@@ -1,4 +1,4 @@
-package at.spengergasse.views.show;
+package at.spengergasse.views.cinema;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Paragraph;
@@ -17,24 +17,24 @@ import java.util.OptionalDouble;
 
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Show")
-@Route("show")
+@PageTitle("Cinema")
+@Route("Cinema")
 @Menu(order = 2, icon = LineAwesomeIconUrl.FILM_SOLID)
-public class ShowView extends VerticalLayout {
+public class CinemaView extends VerticalLayout {
 
-    public ShowView() {
+    public CinemaView() {
         
         setSpacing(false);
         add(HomeView.getHeader());
 
-        H2 title = new H2("Vorführungen");
+        H2 title = new H2("Kinos");
         add(title);
 
-        Component card0 = getCard("Avengers", 10.50, OptionalDouble.of(20.00));
-        Component card1 = getCard("Batman", 8.90, OptionalDouble.of(14.00));
-        Component card2 = getCard("Matrix", 6.50, OptionalDouble.of(12.00));
-        Component card3 = getCard("Lost in Translation", 0.00, OptionalDouble.empty());
-        Component card4 = getCard("Harry Potter", 23.00, OptionalDouble.empty());
+        Component card0 = getCard("Mariahilf", 10.50, OptionalDouble.of(20.00));
+        Component card1 = getCard("Donaustadt", 8.90, OptionalDouble.of(14.00));
+        Component card2 = getCard("Floridsdorf", 6.50, OptionalDouble.of(12.00));
+        Component card3 = getCard("Favoriten", 0.00, OptionalDouble.empty());
+        Component card4 = getCard("Döbling", 23.00, OptionalDouble.empty());
 
         FlexLayout cards = new FlexLayout(card0, card1, card2, card3, card4);
         cards.setWidthFull();
@@ -48,17 +48,17 @@ public class ShowView extends VerticalLayout {
         add(info);
     }
 
-    private Component getCard(String movieTitle, double moviePrice, OptionalDouble popcornFree){
+    private Component getCard(String theatreName, double ticketPrice, OptionalDouble popcornFree){
         Paragraph free;
 
-        H2 movie = new H2(movieTitle);
-        Paragraph price = new Paragraph(moviePrice + " Euro");
+        H2 theatre = new H2(theatreName);
+        Paragraph price = new Paragraph(ticketPrice + " Euro");
         if (popcornFree.isPresent()){
                 free = new Paragraph("Gratis Popcorn bei Bestellung Gesamtbetrag über " + popcornFree.getAsDouble() + " Euro.");
         } else {
                 free = new Paragraph("Kein Gratis Popcorn.");
         }
-        VerticalLayout card = new VerticalLayout(movie, price, free);
+        VerticalLayout card = new VerticalLayout(theatre, price, free);
         card.setWidth("350px");
         card.setPadding(true);
         card.setSpacing(false);

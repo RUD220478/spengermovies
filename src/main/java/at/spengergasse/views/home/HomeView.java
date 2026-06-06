@@ -33,7 +33,7 @@ public class HomeView extends VerticalLayout {
         img.setHeight("150px");
         
         Paragraph description = new Paragraph(
-                "In unserem Establishment verbinden wir Kino mit heimeliger Privatsphäre " +
+                "In unseren Establishments verbinden wir Kino mit heimeliger Atmospähre " +
                 "Feiern Sie mit Freunden, Familie oder mit Leuten aus der Arbeit – " +
                 "Von knallharten Actionthrillern bis zärtlichen Liebesverfilmungen haben wir alles " +
                 "Wir freuen uns auf Ihre Anfrage! - Ihr Spengermovies Team"
@@ -71,7 +71,7 @@ public class HomeView extends VerticalLayout {
         .set("font-size", "2rem")
         .set("margin", "0");
 
-        H2 subName = new H2("Filmgenuss unter Verschluss");
+        H2 subName = new H2("Filmgenuss für Filmfans");
         subName.getStyle()
         .set("margin", "0")
         .set("color", "gray");
