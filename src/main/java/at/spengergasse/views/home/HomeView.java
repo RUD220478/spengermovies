@@ -26,9 +26,14 @@ public class HomeView extends VerticalLayout {
                 .set("font-size", "2rem")
                 .set("margin", "0");
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
+        Image img = new Image("images/movies_logo.png", "placeholder plant");
+        img.setWidth("30%");
         add(img);
+
+        H2 subName = new H2("Filmgenuss unter Verschluss");
+        subName.getStyle()
+                .set("margin", "0")
+                .set("color", "gray");
 
         Paragraph description = new Paragraph(
                 "In unserem Establishment verbinden wir Kino mit heimeliger Privatsphäre " +
@@ -47,7 +52,7 @@ public class HomeView extends VerticalLayout {
         H3 street = new H3("Spengergasse 20");
         H3 city = new H3("1050 Wien");
 
-        add(companyName, img, description, name, street, city);
+        add(companyName, img, subName, description, name, street, city);
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
