@@ -27,31 +27,31 @@ public class Order implements Cloneable{
     private String seat; //front, back, middle
     private Integer quantity; //amount of tickets ordered
     private Double price; // price of a ticket
-    private Boolean drinks; //drinks ordered
+    private Boolean drink; //drink ordered
 
     private static final AtomicLong sequence = new AtomicLong(1000);
     private static final String[] seats = {"Front","Middle","Back"};
 
     public Order(Long orderId, LocalDate orderDate, String movie, String seat, Integer quantity, Double price,
-            Boolean drinks){
+            Boolean drink){
         setOrderId (orderId);
         setOrderDate (orderDate);
         setMovie (movie);
         setSeat (seat);
         setQuantity (quantity);
         setPrice (price);
-        setDrinks (drinks);
+        setDrink (drink);
     }
 
     public Order(LocalDate orderDate, String movie, String seat, Integer quantity, Double price,
-            Boolean drinks) {
+            Boolean drink) {
         setOrderId ();
         setOrderDate (orderDate);
         setMovie (movie);
         setSeat (seat);
         setQuantity (quantity);
         setPrice (price);
-        setDrinks (drinks);
+        setDrink (drink);
     }
 
     public Order(){
@@ -79,7 +79,7 @@ public class Order implements Cloneable{
     // Clone-Method
     @Override
     public Order clone(){
-        return new Order(orderId, orderDate, movie, seat, quantity, price, drinks);
+        return new Order(orderId, orderDate, movie, seat, quantity, price, drink);
     }
 
 }
