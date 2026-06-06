@@ -1,6 +1,8 @@
 package at.spengergasse.views.home;
 
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,14 +20,34 @@ public class HomeView extends VerticalLayout {
     public HomeView() {
         setSpacing(false);
 
+        H1 companyName = new H1("SPENGERMOVIES");
+        companyName.getStyle()
+                .set("font-family", "cursive")
+                .set("font-size", "2rem")
+                .set("margin", "0");
+
         Image img = new Image("images/empty-plant.png", "placeholder plant");
         img.setWidth("200px");
         add(img);
 
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        Paragraph description = new Paragraph(
+                "In unserem Establishment verbinden wir Kino mit heimeliger Privatsphäre " +
+                "Feiern Sie mit Freunden, Familie oder mit Leuten aus der Arbeit – " +
+                "Von knallharten Actionthrillern bis zärtlichen Liebesverfilmungen haben wir alles " +
+                "Wir freuen uns auf Ihre Anfrage! - Ihr Spengermovies Team"
+        );
+
+        description.setWidth("500px");
+        description.getStyle()
+                .set("font-size", "22px")
+                .set("line-height", "1.6")
+                .set("text-align", "left");
+
+        H3 name = new H3("Spengerfilmvorführgesellschaft GmbH");
+        H3 street = new H3("Spengergasse 20");
+        H3 city = new H3("1050 Wien");
+
+        add(companyName, img, description, name, street, city);
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
