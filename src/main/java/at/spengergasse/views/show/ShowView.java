@@ -1,14 +1,11 @@
 package at.spengergasse.views.show;
-
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import at.spengergasse.views.home.HomeView;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Show")
@@ -17,17 +14,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 public class ShowView extends VerticalLayout {
 
     public ShowView() {
-                setSpacing(false);
-        H1 companyName = new H1("Spengermovies");
-        companyName.getStyle()
-                .set("font-family", "cursive")
-                .set("font-size", "2rem")
-                .set("margin", "0");
-
-        H2 subName = new H2("Filmgenuss unter Verschluss");
-        subName.getStyle()
-                .set("margin", "0")
-                .set("color", "gray");
+        
+        setSpacing(false);
+        add(HomeView.getHeader());
 
         H2 title = new H2("Vorführungen");
 
@@ -47,7 +36,7 @@ public class ShowView extends VerticalLayout {
         Paragraph gruppe3 = new Paragraph("Gruppenermäßigung 10 % ab 30 Personen");
 
         add(
-                companyName, subName, title,
+                title,
                 movie1, price1, private1, gruppe1,
                 movie2, price2, private2, gruppe2,
                 movie3, price3, private3, gruppe3
