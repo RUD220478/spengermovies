@@ -6,80 +6,112 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
 @ToString
 @Entity
-public class Order implements Cloneable{
+public class Order implements Cloneable {
 
     @Id
     private Long orderId;
-    private LocalDate orderDate; // time of order
-    private String movie; // movie name
-    private String seat; //front, back, middle
-    private Integer quantity; //amount of tickets ordered
-    private Double price; // price of a ticket
-    private Boolean drink; //drink ordered
+    private LocalDate orderDate;
+    private String movie;
+    private String seat;
+    private Integer quantity;
+    private Double price;
+    private Boolean drink;
 
     private static final AtomicLong sequence = new AtomicLong(1000);
-    private static final String[] seats = {"Front","Middle","Back"};
+    private static final String[] seats = {"Front", "Middle", "Back"};
 
-    public Order(Long orderId, LocalDate orderDate, String movie, String seat, Integer quantity, Double price,
-            Boolean drink){
-        setOrderId (orderId);
-        setOrderDate (orderDate);
-        setMovie (movie);
-        setSeat (seat);
-        setQuantity (quantity);
-        setPrice (price);
-        setDrink (drink);
+    public Order(Long orderId,
+                 LocalDate orderDate,
+                 String movie,
+                 String seat,
+                 Integer quantity,
+                 Double price,
+                 Boolean drink) {
+
+        setOrderId(orderId);
+        setOrderDate(orderDate);
+        setMovie(movie);
+        setSeat(seat);
+        setQuantity(quantity);
+        setPrice(price);
+        setDrink(drink);
     }
 
-    public Order(LocalDate orderDate, String movie, String seat, Integer quantity, Double price,
-            Boolean drink) {
-        setOrderId ();
-        setOrderDate (orderDate);
-        setMovie (movie);
-        setSeat (seat);
-        setQuantity (quantity);
-        setPrice (price);
-        setDrink (drink);
+    public Order(LocalDate orderDate,
+                 String movie,
+                 String seat,
+                 Integer quantity,
+                 Double price,
+                 Boolean drink) {
+
+        setOrderId();
+        setOrderDate(orderDate);
+        setMovie(movie);
+        setSeat(seat);
+        setQuantity(quantity);
+        setPrice(price);
+        setDrink(drink);
     }
 
-    public Order(){
-
+    public Order() {
     }
 
-    public void setOrderId(){
-        orderId = sequence.getAndIncrement();
+    // automatische ID
+    public void setOrderId() {
+        this.orderId = sequence.getAndIncrement();
     }
 
-    public void setPrice(Double price){
-        if (price.doubleValue() < 5){
-            throw new OrderException("Price to low!");
+    // manuelle ID
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setDrink(Boolean drink) {
+        this.drink = drink;
+    }
+
+    public void setPrice(Double price) {
+        if (price == null || price < 5) {
+            throw new OrderException("Price too low!");
         }
         this.price = price;
     }
 
-    public void setSeat(String seat){
-        if (! Arrays.asList(seats).contains(seat)){
-            throw new OrderException("Wrong seat");
+    public void setSeat(String seat) {
+        if (!Arrays.asList(seats).contains(seat)) {
+            throw new OrderException("Wrong seat!");
         }
         this.seat = seat;
     }
 
-    // Clone-Method
     @Override
-    public Order clone(){
-        return new Order(orderId, orderDate, movie, seat, quantity, price, drink);
+    public Order clone() {
+        return new Order(
+                orderId,
+                orderDate,
+                movie,
+                seat,
+                quantity,
+                price,
+                drink
+        );
     }
-
 }
